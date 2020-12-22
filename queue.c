@@ -26,11 +26,11 @@ Queue* queue_add(Queue *q, QueueResult *res, char name[STR_LEN], char date[10], 
     assert(q != NULL);
     if (q->count < q->size){
             for (count=0;count<SHARE_Q_LEN;count++){
-                if(strcmp(q->shares->name,name)==0){
-                    q->shares[0]->name[STR_LEN] = name[STR_LEN];
-                    q->shares->date[10] = date[10];
-                    q->shares->price = price;
-                    q->shares->quantity = quantity;
+                if(strcmp(q->shares[count]->name,name)==0){
+                    q->shares[count]->name[STR_LEN] = name[STR_LEN];
+                    q->shares[count]->date[10] = date[10];
+                    q->shares[count]->price = price;
+                    q->shares[count]->quantity = quantity;
                     q->rear = (q->rear + 1) % q->size;
                     ++q->count;
                     res->status = Q_OK;
@@ -56,31 +56,31 @@ Queue* queue_add(Queue *q, QueueResult *res, char name[STR_LEN], char date[10], 
 //    return q;
 //}
 //
-//Queue* queue_delete_partial(Queue *q, QueueResult *res,char name[STR_LEN], int32_t quantity){
-//    assert(q != NULL);
-//    if (q->count != 0){
-//            for(count=0;count<SHARE_Q_LEN;count++){
-//                if(strcmp(q->shares[count]->name,name)== 0) {
-//                    res->data = q->shares[count]->name[STR_LEN];
-//                    q->shares[count]->quantity = q->shares[count]->quantity-quantity;
-//                }
-//            }
-//    }
-//    return q;
-//}
-//
-//Queue* queue_add_partial(Queue *q, QueueResult *res,char name[STR_LEN], int32_t quantity){
-//    assert(q != NULL);
-//    if (q->count != 0){
-//            for(count=0;count<SHARE_Q_LEN;count++){
-//                if(strcmp(q->shares[count]->name,name)== 0) {
-//                    res->data = q->shares[count]->name[STR_LEN];
-//                    q->shares[count]->quantity = q->shares[count]->quantity+quantity;
-//                }
-//            }
-//    }
-//    return q;
-//}
+Queue* queue_delete_partial(Queue *q, QueueResult *res,char name[STR_LEN], int32_t quantity){
+    assert(q != NULL);
+    if (q->count != 0){
+            for(count=0;count<SHARE_Q_LEN;count++){
+                if(strcmp(q->shares[count]->name,name)== 0) {
+                    res->data = q->shares[count]->name[STR_LEN];
+                    q->shares[count]->quantity = q->shares[count]->quantity-quantity;
+                }
+            }
+    }
+    return q;
+}
+
+Queue* queue_add_partial(Queue *q, QueueResult *res,char name[STR_LEN], int32_t quantity){
+    assert(q != NULL);
+    if (q->count != 0){
+            for(count=0;count<SHARE_Q_LEN;count++){
+                if(strcmp(q->shares[count]->name,name)== 0) {
+                   res->data = q->shares[count]->name[STR_LEN];
+                    q->shares[count]->quantity = q->shares[count]->quantity+quantity;
+                }
+            }
+    }
+    return q;
+}
 
 uint32_t queue_length(Queue *q) {
     assert(q != NULL);

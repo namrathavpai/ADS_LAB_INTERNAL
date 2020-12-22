@@ -12,9 +12,13 @@ typedef struct _share_info_ Share;
 
 typedef struct  _queue_result_ QueueResult;
 
+struct _coust_q_ {
+    char name[STR_LEN];
+};
+
 struct _share_info_ {
     char name[STR_LEN];
-    char date[10];
+    char date[STR_LEN];
     int32_t price;
     int32_t quantity;
 };
@@ -24,7 +28,7 @@ struct _queue_ {
     uint32_t count;
     uint32_t rear;
     uint32_t front;
-    Share shares[SHARE_Q_LEN];
+    Share* shares[SHARE_Q_LEN];
 };
 
 
