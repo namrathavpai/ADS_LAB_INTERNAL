@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1608609411 source:c:\users\msis\documents\201046008\ads_lab_internal\main.c
+	<stdio.h>
+	<stdlib.h>
+	"queue.h"
+	<assert.h>
+	<stdio.h>
+
+1608612099 c:\users\msis\documents\201046008\ads_lab_internal\queue.h
+	<stdlib.h>
+	<stdint.h>
+	"appconst.h"
+
+1608610138 c:\users\msis\documents\201046008\ads_lab_internal\appconst.h
+
+1608611663 source:c:\users\msis\documents\201046008\ads_lab_internal\queue.c
+	<stdlib.h>
+	<stdint.h>
+	"queue.h"
+	<assert.h>
+	<string.h>
+
